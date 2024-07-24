@@ -1,0 +1,321 @@
+:root {
+    --hover-on-text: #da2c38;
+    --text-color: #87c38f;
+    --header-footer-color: #43291f;
+    --nav-bar-color: #5d3c2e;
+    --background-content: #f4f0bb;
+    --important-text: #226f54;
+}
+
+* {
+    margin: 0;
+    caret-color: var(--text-color);
+    list-style-type: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "header header header "
+        "nav nav nav "
+        "cont cont cont  "
+        "fot fot fot";
+}
+
+header {
+    background-color: var(--header-footer-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: header;
+}
+
+.logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: var(--text-color);
+    grid-area: logo;
+}
+
+.logo .icon {
+    color: var(--important-text);
+    position: absolute;
+    top: calc(50% - 17px);
+    left: calc(-25%);
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.logo .text {
+    font-weight: bold;
+}
+
+nav {
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    background-color: var(--nav-bar-color);
+    grid-area: nav;
+    display: grid;
+    grid-template-areas: "search search list list . ";
+    align-items: center;
+    height: 80px;
+}
+
+nav form {
+    grid-area: search;
+}
+
+nav form input {
+    position: relative;
+    width: calc(100% - 600px);
+    margin-left: 200px;
+    outline: none;
+    border-radius: 10px;
+    height: 50px;
+    font-size: 40px;
+    transition: 0.5s;
+}
+
+input::placeholder {
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    font-size: 40px;
+}
+
+input:focus::placeholder {
+    visibility: hidden;
+}
+
+input:hover {
+    width: calc(100% - 400px);
+}
+
+nav ul {
+    grid-area: list;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-color);
+    font-size: 22px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+}
+
+nav ul li a:hover {
+    color: var(--hover-on-text);
+}
+nav ul #about{
+    position: relative;
+}
+nav ul #about::after  {
+    content: "";
+    position:absolute;
+    display: block;
+    top: calc(44%);
+    left: 108%;
+    border-width: 8px;
+    border-style:solid;
+    border-color: var(--text-color) transparent transparent ;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+nav ul li ul{
+    padding: 21px;
+    border-top: 5px var(--hover-on-text) solid;
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-content);
+    box-shadow: 5px 5px 5px 2px black ;
+    transition: 0.3s;
+}
+nav ul li ul li{
+    padding: 0 10px;
+    cursor: pointer;
+}   
+nav ul li ul li span{
+    display: block;
+    padding: 5px 0;
+}   
+
+nav ul #about:hover ul{
+    visibility: visible;
+
+}
+.content {
+    background-color: var(--background-content);
+    grid-area: cont;
+    display: grid;
+    grid-template-columns: repeat(4, calc(25% - 10px));
+    grid-template-rows: repeat(2, calc(50% - 5px));
+    //height: calc(100vh - 114px);
+    column-gap: 10px;
+}
+
+.content div {
+    overflow: hidden;
+    margin: 5px;
+    height: 800px;
+    width: 100%;
+    background-color: var(--important-text);
+    position: relative;
+}
+
+.content div img {
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+
+.content div ::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "100$";
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    color: var(--important-text);
+    font-size: 20px;
+    background-color: white;
+    top: 70%;
+    left: 30%;
+    border-radius: 50px;
+    font-size: 40px;
+    visibility: hidden;
+    transition: 0.1s;
+}
+
+.content div :hover img {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.7;
+}
+
+.content div :hover::after {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.9;
+    visibility: visible;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "logo themes"
+        "break break"
+        "conntent conntent";
+    grid-template-rows: 77px 3px 120px;
+    grid-area: fot;
+    background-color: var(--header-footer-color);
+    width: 100%;
+    height: 200px;
+
+}
+
+footer .logo-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: var(--text-color);
+    margin-left: 5px;
+    margin-top: 5px;
+    display: flex;
+}
+
+footer .logo-footer .icon {
+    color: var(--important-text);
+    margin-right: 4px;
+}
+
+footer .logo-footer .logo-movable {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+}
+
+footer .themes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: var(--text-color);
+    margin: 5px 5px 0 0;
+}
+
+footer .themes a {
+    margin: 0;
+    font-size: 30px;
+    color: var(--text-color);
+}
+
+footer .break {
+    grid-area: break;
+    border-top: 1px black solid;
+    margin: 0 25% 0 25%;
+}
+
+footer .connect {
+    grid-area: conntent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: var(--important-text);
+}
+
+footer .connect .facebook {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+footer .connect .facebook:hover{
+    box-shadow: 0px 0px 13px 3px var(--important-text);
+}
+footer .connect .instagram {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+footer .connect .instagram:hover{
+    box-shadow: 0px 0px 13px 3px var(--important-text);
+}
+footer .connect .twitch {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+footer .connect .twitch:hover{
+    box-shadow: 0px 0px 13px 3px var(--important-text);
+}
+footer .connect .twitter {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+footer .connect .twitter:hover{
+    box-shadow: 0px 0px 13px 3px var(--important-text);
+}
+footer .connect .icons {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
